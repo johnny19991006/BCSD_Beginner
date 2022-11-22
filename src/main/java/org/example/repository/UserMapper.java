@@ -1,7 +1,7 @@
 package org.example.repository;
 
 
-import org.example.domain.Reply;
+
 import org.example.domain.User;
 import org.springframework.stereotype.Repository;
 
