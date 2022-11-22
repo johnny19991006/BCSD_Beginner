@@ -10,6 +10,7 @@ public class ReplyServiceImpl implements ReplyService {
 
     private final ReplyMapper replyMapper;
 
+
     @Autowired
     public ReplyServiceImpl(ReplyMapper replyMapper) {
         this.replyMapper = replyMapper;
@@ -25,17 +26,24 @@ public class ReplyServiceImpl implements ReplyService {
 
 
 
-    public void updateReply(long ReplyId,Reply reply) {
-        /*Reply replyTest= replyMapper.getReplyById(ReplyId);
+    public void updateReply(long ReplyId,Reply updateReply) {
+
+        Reply replyTest= replyMapper.getReplyById(ReplyId);
 
         if(replyTest!=null){
+
+            replyTest.setReplyContent(updateReply.getReplyContent());
+            replyTest.setReplyDate(updateReply.getReplyDate());
+            replyTest.setReplyLike(updateReply.getReplyLike());
+            replyTest.setBoard_BoardId(updateReply.getBoard_BoardId());
+            replyTest.setUser_UserId(updateReply.getUser_UserId());
             replyMapper.update(replyTest);
-        }else{
+        }else {
             throw new IllegalStateException("회원이 존재하지 않습니다.");
-        }*/
-        replyMapper.update(reply);
+        }
 
     }
+
 
     public void deleteReply(long ReplyId) {
         if(replyMapper.getReplyById(ReplyId)!=null){

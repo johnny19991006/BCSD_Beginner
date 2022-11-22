@@ -23,15 +23,19 @@ public class BoardServiceImpl implements BoardService {
         boardMapper.create(board);
     }
 
-    public void updateBoard(long BoardId, Board board) {
-        /*Reply replyTest= replyMapper.getReplyById(ReplyId);
+    public void updateBoard(long BoardId, Board updateBoard) {
+        Board boardTest= boardMapper.getBoardById(BoardId);
 
-        if(replyTest!=null){
-            replyMapper.update(replyTest);
-        }else{
+        if(boardTest!=null){
+
+            boardTest.setBoardTitle(updateBoard.getBoardTitle());
+            boardTest.setBoardDate(updateBoard.getBoardDate());
+            boardTest.setBoardContent(updateBoard.getBoardContent());
+            boardTest.setUser_UserId(updateBoard.getUser_UserId());
+            boardMapper.update(boardTest);
+        }else {
             throw new IllegalStateException("회원이 존재하지 않습니다.");
-        }*/
-        boardMapper.update(board);
+        }
 
     }
 

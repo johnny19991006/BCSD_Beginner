@@ -22,10 +22,15 @@ public class UserServiceImpl implements UserService {
     public void createUser(User user) {
         userMapper.create(user);
     }
-    public void updateUser(long UserId, User user) {
+    public void updateUser(long UserId, User updateUser) {
         User userTest= userMapper.getUserById(UserId);
 
         if(userTest!=null){
+            userTest.setUserPw(updateUser.getUserPw());
+            userTest.setUserBirth(updateUser.getUserBirth());
+            userTest.setUserEmail(updateUser.getUserEmail());
+            userTest.setUserName(updateUser.getUserName());
+            userTest.setUserSex(updateUser.getUserSex());
             userMapper.update(userTest);
         }else{
             throw new IllegalStateException("회원이 존재하지 않습니다.");

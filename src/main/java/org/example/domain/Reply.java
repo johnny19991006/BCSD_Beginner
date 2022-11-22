@@ -1,11 +1,13 @@
 package org.example.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
 public class Reply {
     private Long ReplyId;
+
     private String ReplyContent;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date ReplyDate;

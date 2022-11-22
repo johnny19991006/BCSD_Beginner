@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="org.example.repository.StudentMapper">
-    <select id="getStudentById" parameterType="Long" resultType="org.example.domain.Student">
-        SELECT id, name, department
+
+    <resultMap id="studentMap" type="org.example.domain.Student">
+        <result column="student_id" property="id" jdbcType="NVARCHAR" javaType="String"/>
+        <result column="student_name" property="name" jdbcType="NVARCHAR" javaType="String"/>
+        <result column="student_department" property="department" jdbcType="NVARCHAR" javaType="String"/>
+    </resultMap>
+    <select id="getStudentById" resultMap="studentMap">
+        SELECT student_id, student_name, student_department
         FROM student
         WHERE id = #{id}
     </select>
 
     <insert id="create" parameterType="org.example.domain.Student">
         INSERT INTO student
-            (name, department)
-        VALUES (#{name}, #{department});
+            (student_name, student_department)
+        VALUES (#{student_name}, #{student_department});
     </insert>
 </mapper>
